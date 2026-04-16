@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+
+{% block title %}Billing - HMS{% endblock %}
+
+{% block content %}
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <h2 class="page-title mb-0">Billing & Invoices</h2>
+    <a href="{{ url_for('generate_bill') }}" class="btn btn-success"><i class="fas fa-file-invoice-dollar me-1"></i> Generate Bill</a>
+</div>
+
+<div class="card">
+    <div class="card-body p-0">
+        <div class="table-responsive">
+            <table class="table mb-0 table-hover align-middle">
+                <thead>
+                    <tr>
+                        <th class="ps-4">Bill ID</th>
+                        <th>Patient Name</th>
+                        <th>Amount</th>
+                        <th>Date Processed</th>
+                        <th>Status</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for b in bills %}
+                    <tr>
+                        <td class="ps-4 fw-bold text-muted">INV-{{ b.Bill_ID }}</td>
+                        <td class="fw-bold">{{ b.PatientName }}</td>
+                        <td class="fw-bold text-success">${{ b.Amount }}</td>
+                        <td>{{ b.Date }}</td>
+                        <td>
+                            {% if b.Payment_Status == 'Paid' %}
+                                <span class="badge bg-success bg-opacity-10 text-success border border-success border-opacity-25 px-2 py-1">Paid</span>
+                            {% else %}
+                                <span class="badge bg-warning bg-opacity-10 text-warning border border-warning border-opacity-25 px-2 py-1">Pending</span>
+                            {% endif %}
+                        </td>
+                        <td>
+                            <button class="btn btn-sm btn-outline-secondary"><i class="fas fa-print"></i> Print</button>
+                        </td>
+                    </tr>
+                    {% else %}
+                    <tr>
+                        <td colspan="6" class="text-center py-4 text-muted">No billing records found.</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}

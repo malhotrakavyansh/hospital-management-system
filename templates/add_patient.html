@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+
+{% block title %}Add Patient - HMS{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-8">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <h2 class="page-title mb-0">Register New Patient</h2>
+            <a href="{{ url_for('patients') }}" class="btn btn-outline-secondary btn-sm"><i class="fas fa-arrow-left me-1"></i> Back</a>
+        </div>
+
+        <div class="card">
+            <div class="card-body p-4">
+                <form action="{{ url_for('add_patient') }}" method="POST">
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <label class="form-label fw-bold">Full Name</label>
+                            <input type="text" class="form-control" name="name" required placeholder="John Doe">
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label fw-bold">Phone Number</label>
+                            <input type="text" class="form-control" name="phone" required placeholder="555-1234">
+                        </div>
+                    </div>
+                    
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <label class="form-label fw-bold">Age</label>
+                            <input type="number" class="form-control" name="age" required min="0" placeholder="e.g. 35">
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label fw-bold">Gender</label>
+                            <select class="form-select" name="gender" required>
+                                <option value="" disabled selected>Select gender...</option>
+                                <option value="Male">Male</option>
+                                <option value="Female">Female</option>
+                                <option value="Other">Other</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="mb-4">
+                        <label class="form-label fw-bold">Disease/Diagnosis</label>
+                        <input type="text" class="form-control" name="disease" placeholder="e.g. Hypertension">
+                    </div>
+                    
+                    <div class="d-grid">
+                        <button type="submit" class="btn btn-primary py-2 fw-bold"><i class="fas fa-save me-2"></i> Save Patient Record</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
