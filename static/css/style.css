@@ -95,6 +95,22 @@ body {
     border-left: 5px solid var(--primary);
 }
 
+.stat-link {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+}
+
+.stat-link:hover,
+.stat-link:focus {
+    text-decoration: none;
+    color: inherit;
+}
+
+.stat-link .stat-card {
+    cursor: pointer;
+}
+
 .stat-icon {
     font-size: 2.5rem;
     color: var(--primary-light);

@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+
+{% block title %}Edit Patient - HMS{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-8">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <h2 class="page-title mb-0">Edit Patient</h2>
+            <a href="{{ url_for('patients') }}" class="btn btn-outline-secondary btn-sm"><i class="fas fa-arrow-left me-1"></i> Back</a>
+        </div>
+
+        <div class="card">
+            <div class="card-body p-4">
+                <form action="{{ url_for('edit_patient', patient_id=patient.Patient_ID) }}" method="POST">
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <label class="form-label fw-bold">Full Name</label>
+                            <input type="text" class="form-control" name="name" required value="{{ patient.Name }}">
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label fw-bold">Phone Number</label>
+                            <input type="text" class="form-control" name="phone" required value="{{ patient.Phone }}">
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <label class="form-label fw-bold">Age</label>
+                            <input type="number" class="form-control" name="age" required min="0" value="{{ patient.Age }}">
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label fw-bold">Gender</label>
+                            <select class="form-select" name="gender" required>
+                                <option value="Male" {% if patient.Gender == 'Male' %}selected{% endif %}>Male</option>
+                                <option value="Female" {% if patient.Gender == 'Female' %}selected{% endif %}>Female</option>
+                                <option value="Other" {% if patient.Gender == 'Other' %}selected{% endif %}>Other</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="mb-4">
+                        <label class="form-label fw-bold">Disease/Diagnosis</label>
+                        <input type="text" class="form-control" name="disease" value="{{ patient.Disease }}">
+                    </div>
+
+                    <div class="d-grid">
+                        <button type="submit" class="btn btn-primary py-2 fw-bold"><i class="fas fa-save me-2"></i> Update Patient Record</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+
+{% block title %}Medicines - HMS{% endblock %}
+
+{% block content %}
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <h2 class="page-title mb-0">Medicine Inventory</h2>
+    <a href="{{ url_for('add_medicine') }}" class="btn btn-warning text-dark"><i class="fas fa-capsules me-1"></i> Add Medicine</a>
+</div>
+
+<div class="card">
+    <div class="card-body p-0">
+        <div class="table-responsive">
+            <table class="table mb-0 table-hover align-middle">
+                <thead>
+                    <tr>
+                        <th class="ps-4">Medicine ID</th>
+                        <th>Name</th>
+                        <th>Category</th>
+                        <th>Unit Price</th>
+                        <th>Stock Qty</th>
+                        <th>Expiry Date</th>
+                        <th class="text-end pe-4">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for m in medicines %}
+                    <tr>
+                        <td class="ps-4 fw-bold text-muted">#{{ m.Medicine_ID }}</td>
+                        <td class="fw-bold">{{ m.Medicine_Name }}</td>
+                        <td>{{ m.Category }}</td>
+                        <td>${{ m.Unit_Price }}</td>
+                        <td>{{ m.Stock_Qty }}</td>
+                        <td>{{ m.Expiry_Date }}</td>
+                        <td class="text-end pe-4">
+                            <a href="{{ url_for('edit_medicine', medicine_id=m.Medicine_ID) }}" class="btn btn-sm btn-outline-primary me-1">
+                                <i class="fas fa-pen"></i> Edit
+                            </a>
+                            <form action="{{ url_for('delete_medicine', medicine_id=m.Medicine_ID) }}" method="POST" class="d-inline" onsubmit="return confirm('Delete this medicine record?');">
+                                <button type="submit" class="btn btn-sm btn-outline-danger">
+                                    <i class="fas fa-trash"></i> Delete
+                                </button>
+                            </form>
+                        </td>
+                    </tr>
+                    {% else %}
+                    <tr>
+                        <td colspan="7" class="text-center py-4 text-muted">No medicine records found.</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}

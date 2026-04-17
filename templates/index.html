@@ -18,70 +18,78 @@
 <div class="row g-4 mb-5">
     <!-- Patients Stat -->
     <div class="col-md-3">
-        <div class="card stat-card h-100">
-            <div class="card-body">
-                <div class="d-flex justify-content-between align-items-center">
-                    <div>
-                        <h6 class="text-muted fw-bold mb-1">Total Patients</h6>
-                        <h2 class="mb-0 fw-bolder">{{ stats.patients }}</h2>
-                    </div>
-                    <div class="stat-icon">
-                        <i class="fas fa-user-injured"></i>
+        <a href="{{ url_for('patients') }}" class="stat-link" aria-label="View all patients">
+            <div class="card stat-card h-100">
+                <div class="card-body">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div>
+                            <h6 class="text-muted fw-bold mb-1">Total Patients</h6>
+                            <h2 class="mb-0 fw-bolder">{{ stats.patients }}</h2>
+                        </div>
+                        <div class="stat-icon">
+                            <i class="fas fa-user-injured"></i>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
+        </a>
     </div>
 
     <!-- Doctors Stat -->
     <div class="col-md-3">
-        <div class="card stat-card h-100" style="border-left-color: var(--success);">
-            <div class="card-body">
-                <div class="d-flex justify-content-between align-items-center">
-                    <div>
-                        <h6 class="text-muted fw-bold mb-1">Total Doctors</h6>
-                        <h2 class="mb-0 fw-bolder">{{ stats.doctors }}</h2>
-                    </div>
-                    <div class="stat-icon text-info">
-                        <i class="fas fa-user-md"></i>
+        <a href="{{ url_for('doctors') }}" class="stat-link" aria-label="View all doctors">
+            <div class="card stat-card h-100" style="border-left-color: var(--success);">
+                <div class="card-body">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div>
+                            <h6 class="text-muted fw-bold mb-1">Total Doctors</h6>
+                            <h2 class="mb-0 fw-bolder">{{ stats.doctors }}</h2>
+                        </div>
+                        <div class="stat-icon text-info">
+                            <i class="fas fa-user-md"></i>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
+        </a>
     </div>
 
     <!-- Appointments Stat -->
     <div class="col-md-3">
-        <div class="card stat-card h-100" style="border-left-color: #f72585;">
-            <div class="card-body">
-                <div class="d-flex justify-content-between align-items-center">
-                    <div>
-                        <h6 class="text-muted fw-bold mb-1">Scheduled Appts</h6>
-                        <h2 class="mb-0 fw-bolder">{{ stats.appointments }}</h2>
-                    </div>
-                    <div class="stat-icon" style="color: #f72585;">
-                        <i class="fas fa-calendar-alt"></i>
+        <a href="{{ url_for('appointments') }}" class="stat-link" aria-label="View all appointments">
+            <div class="card stat-card h-100" style="border-left-color: #f72585;">
+                <div class="card-body">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div>
+                            <h6 class="text-muted fw-bold mb-1">Scheduled Appts</h6>
+                            <h2 class="mb-0 fw-bolder">{{ stats.appointments }}</h2>
+                        </div>
+                        <div class="stat-icon" style="color: #f72585;">
+                            <i class="fas fa-calendar-alt"></i>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
+        </a>
     </div>
 
     <!-- Revenue Stat -->
     <div class="col-md-3">
-        <div class="card stat-card h-100" style="border-left-color: #4cc9f0;">
-            <div class="card-body">
-                <div class="d-flex justify-content-between align-items-center">
-                    <div>
-                        <h6 class="text-muted fw-bold mb-1">Revenue</h6>
-                        <h2 class="mb-0 fw-bolder">${{ stats.revenue }}</h2>
-                    </div>
-                    <div class="stat-icon" style="color: #4cc9f0;">
-                        <i class="fas fa-dollar-sign"></i>
+        <a href="{{ url_for('billing') }}" class="stat-link" aria-label="View all billing records">
+            <div class="card stat-card h-100" style="border-left-color: #4cc9f0;">
+                <div class="card-body">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div>
+                            <h6 class="text-muted fw-bold mb-1">Revenue</h6>
+                            <h2 class="mb-0 fw-bolder">${{ stats.revenue }}</h2>
+                        </div>
+                        <div class="stat-icon" style="color: #4cc9f0;">
+                            <i class="fas fa-dollar-sign"></i>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
+        </a>
     </div>
 </div>
 
@@ -96,6 +104,7 @@
                     <a href="{{ url_for('add_doctor') }}" class="btn btn-outline-primary text-start p-3"><i class="fas fa-user-plus me-2"></i> Onboard New Doctor</a>
                     <a href="{{ url_for('generate_bill') }}" class="btn btn-outline-success text-start p-3"><i class="fas fa-file-invoice-dollar me-2"></i> Generate Patient Bill</a>
                     <a href="{{ url_for('appointments') }}" class="btn btn-outline-info text-start p-3"><i class="fas fa-list me-2"></i> View All Appointments</a>
+                    <a href="{{ url_for('medicines') }}" class="btn btn-outline-warning text-start p-3"><i class="fas fa-capsules me-2"></i> Manage Medicine Inventory</a>
                 </div>
             </div>
         </div>
